@@ -1,10 +1,15 @@
+
 div.navigation * {
 	/*border: 2px solid white;*/
 }
 
 body {
-	background: url('/home/cata/workspace/web-internship-20141205/eurosport/images/background.jpg') no-repeat fixed 0 0 / 100% 100% #0d0d0d;;
+	background: url('../images/background.jpg') no-repeat fixed 0 0 / 100% 100% #0d0d0d;
+	margin: 0px;
+
 }
+
+
 
 /*
 	HEADER
@@ -18,7 +23,9 @@ div.header {
 	height: auto;
 	width: 1260px;
 
-	background-color: black;
+	background-color: rgb(13, 13, 13);
+
+	z-index: 100 ;
 }
 
 
@@ -56,7 +63,7 @@ div.header div.bottom div.logo {
 	width: 350px;
 	height: 75px;
 	
-	background: url('/home/cata/workspace/web-internship-20141205/eurosport/images/logo.gif') no-repeat left top;
+	background: url('../images/logo.gif') no-repeat left top;
 	background-position: -350px 0px;
 
 	float: left;
@@ -90,7 +97,7 @@ div.header div.search_button {
 	border: 1px solid black;
 }
 
-div.header div.search_button p{
+div.header div.search_button p {
 	color: #333;
 	font-family: Arial;
 	font-size: 12px;
@@ -100,7 +107,7 @@ div.header div.search_button p{
 }
 
 div.header table.search_bar td input.search_bar {
-	background: url("http://l.yimg.com/dh/ap/ap/default/120503/uh_sprite_2_16.png") no-repeat;
+	background: url("../images/icon_sprites.png") no-repeat;
 	background-position: 5px -225px;
 	padding-left: 20px;
 
@@ -150,8 +157,6 @@ div.header a:link, a:visited {
 	NAVIGATION
 */
 div.navigation {
-	position: fixed;
-	top: 80px;
 	width: 150px;
 
 	float: left;
@@ -161,11 +166,17 @@ div.navigation {
 	padding: 0px;
 
 }
-div.navigation.sticsk {
+div.navigation.stick {
 	position: fixed;
-	/*top: 120;*/
-	z-index: 10000;
+	z-index: -1;
 }
+div.navigation.stick.bottom {
+	bottom: 0px;
+}
+div.navigation.stick.top {
+	top: 80px;
+}
+
 
 div.navigation ul {
 	list-style: outside none none;
@@ -217,7 +228,6 @@ a.tooltip:hover span {
 a.tooltip span ul {
 	padding: 10px;
 	background: #fff;
-	margin-top: -50%;
 
 }
 .callout {
@@ -227,8 +237,6 @@ a.tooltip span ul {
 	border: 0;
 	left: -12px;
 }
-
-
 
 
 
@@ -256,6 +264,197 @@ div.wrapper {
 	
 	margin: 5px 15px;
 	float: left;
+}
 
-	/*display: none;*/
+
+
+/*
+	SUPER-HERO
+*/
+div.super-hero, div.super-hero * {
+}
+
+div.super-hero div.main {
+	position: relative;
+	width: 100%;
+	height: 300px;
+	float: left;
+
+	background-image: url("../images/super-hero-img1.jpg");
+}
+
+div.super-hero div.main div.ribbon {
+	background-color: #579160;
+	padding: 4px 8px;
+	display: inline-block;
+	margin: 0px;
+
+	
+
+	font-family: Helvetica;
+	font-size: 11px;
+	font-weight: 700;
+	font-style: normal;
+	font-size-adjust: none;
+	color: #fff;
+	letter-spacing: normal;
+	word-spacing: 0px;
+	line-height: 13.75px;
+	text-align: center;
+}
+
+div.super-hero div.main div.super-hero-inner-wrapper {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-bottom: 20px;
+	display: inline-block;
+	width:100%;
+}
+div.super-hero div.main div.super-hero-outer-wrapper {
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	height: auto;
+
+
+	font-family: Helvetica;
+	font-weight: 400;
+	font-style:	normal;
+	font-size-adjust: none;
+}
+div.super-hero div.main  a:link {
+	text-decoration: none;
+}
+div.super-hero div.main  a:hover{
+	text-decoration: underline;
+}
+
+div.super-hero div.main  div.title {
+	line-height: 28.1333px;
+	margin: 6px 10px;
+	font-size: 22.5px;
+}
+div.super-hero div.main  div.text {
+	margin: 6px 10px;
+	line-height: 15.9333px;
+	color: #fff;
+	font-size: 12.75px;
+}
+div.super-hero div.main  div.links {
+	line-height: 15.8833px;
+	margin: 6px 10px;
+	font-size: 12.7px;
+}
+
+div.super-hero div.main  div.links ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.super-hero div.main  div.links ul li {
+	list-style: outside none none;
+	float: left;
+	padding: 0px 6px;
+	border-left: 1px solid white;
+
+	height: 16px;
+	vertical-align: top;
+}
+div.super-hero div.main  div.links ul li:first-child {
+	padding-left: 0px;
+	border-left: none;
+}
+div.super-hero div.main  div.links a:link, div.super-hero div.main  div.links a:visited {
+	display: block;
+	color: #8ec0ff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+div.super-hero a.thumbnail {
+	padding: 0px;
+	margin: 0px;
+	display: inline-block;
+	width: 166.5px;
+	height: 117px;
+	float: left;
+	
+	border-right: 1px solid #404339;
+	border-bottom: 5px solid #27282c;
+
+	background-color: #27282c;
+}
+div.super-hero a.thumbnail.selected {
+	border-bottom: 5px solid white;
+}
+
+div.super-hero a.thumbnail div.img_wrapper {
+	height: 72px;
+	overflow: hidden;
+	position: relative;
+}
+div.super-hero a.thumbnail div.img_wrapper img {
+	width: 100%;
+	position: relative;
+}
+div.super-hero a.thumbnail div.img_wrapper div.ribbon {
+	position: absolute;
+	bottom: 0px;
+	background-color: #579160;
+	padding: 4px 8px;
+
+
+	font-family: Helvetica;
+	font-size: 11px;
+	font-weight: 700;
+	font-style: normal;
+	font-size-adjust: none;
+	color: #fff;
+	letter-spacing: normal;
+	word-spacing: 0px;
+	line-height: 13.75px;
+	text-align: center;
+}
+
+div.super-hero a.thumbnail:link, div.super-hero a.thumbnail:visited {
+	text-decoration: none;
+}
+div.super-hero a.thumbnail div.text {
+	padding: 8px 6px 0px 5px;
+	height: 30px;
+	overflow: hidden;
+
+	font-family: Helvetica;
+	font-size: 11px;
+	font-weight: 400;
+	font-style: normal;
+	font-size-adjust: none;
+	color: rgb(240,​ 240,​ 240);
+	letter-spacing: normal;
+	word-spacing: 0px;
+	line-height: 15px;
+	text-align: left;
+
+}
+
+.hidden {
+	display: none;
+}
+/*
+	TEST
+
+div.test {
+	position:fixed;
+	right: 30px;
+	background-color: rgba(200, 200, 40, 0.8);
+
+	padding: 10px;
 }
