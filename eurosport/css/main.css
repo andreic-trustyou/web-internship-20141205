@@ -1,0 +1,261 @@
+div.navigation * {
+	/*border: 2px solid white;*/
+}
+
+body {
+	background: url('/home/cata/workspace/web-internship-20141205/eurosport/images/background.jpg') no-repeat fixed 0 0 / 100% 100% #0d0d0d;;
+}
+
+/*
+	HEADER
+*/
+div.header {
+	position: fixed;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+
+	height: auto;
+	width: 1260px;
+
+	background-color: black;
+}
+
+
+/*
+	TOP PART OF THE HEADER
+*/
+div.header div.top {
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+div.header div.top > div {
+	display: inline-block;
+	position: relative;
+
+}
+div.header div.top div.left {
+	float: left;
+}
+
+div.header div.top div.right {
+	float: right;
+}
+
+
+/*
+	BOTTOM PART OF THE HEADER
+*/
+div.header div.bottom > div{
+	display: inline-block;
+}
+div.header div.bottom div.logo {
+	margin-top: -15px;
+	margin-left: 50px;
+	width: 350px;
+	height: 75px;
+	
+	background: url('/home/cata/workspace/web-internship-20141205/eurosport/images/logo.gif') no-repeat left top;
+	background-position: -350px 0px;
+
+	float: left;
+}
+div.header table.search_bar {
+	color: #fff;
+	float: right;
+	display: block;
+	margin-top: 20px;
+	margin-right: 10px;
+
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	background-color: #dfdfe0;
+	padding: 4px;
+}
+
+div.header table.search_bar td {
+	background-color: #fff;
+}
+div.header div.search_button {
+	background:-moz-linear-gradient(center top , #fff39c, #fee474 50%, #fdd14c 50%, #fcc42e) repeat scroll 0 0 rgba(0, 0, 0, 0);
+	background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, from(rgb(252, 196, 46)), color-stop(0.5, rgb(253, 209, 76)), color-stop(0.5, rgb(254, 228, 116)), to(rgb(255, 243, 156)));
+	
+	width: 120px;
+	height: 20px;
+
+	text-align: center;
+
+	border: 1px solid black;
+}
+
+div.header div.search_button p{
+	color: #333;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: 700;
+
+	margin-top: 3px;
+}
+
+div.header table.search_bar td input.search_bar {
+	background: url("http://l.yimg.com/dh/ap/ap/default/120503/uh_sprite_2_16.png") no-repeat;
+	background-position: 5px -225px;
+	padding-left: 20px;
+
+	width: 600px;
+}
+
+
+
+
+
+
+
+/*
+	HEADER LISTS
+*/
+div.header div.top div ul {
+	padding: 0px;
+	margin: 0px;
+}
+div.header div.top div.header-container {
+	margin-top: 6px;
+}
+div.header div.top div ul li {
+	list-style: outside none none;
+	float: left;
+	padding: 0px 9px;
+	border-left: 1px solid white;
+
+	height: 10px;
+	vertical-align: top;
+}
+div.header div.top div ul li:first-child {
+	border-left: none;
+}
+div.header a:link, a:visited {
+	font-size: 11px;
+	font-family: Arial;
+	text-decoration: none;
+	color: white;
+
+	margin-top: -2px;
+	display: block;
+}
+
+
+/*
+	NAVIGATION
+*/
+div.navigation {
+	position: fixed;
+	top: 80px;
+	width: 150px;
+
+	float: left;
+	left: 0px;
+
+	margin: 0px;
+	padding: 0px;
+
+}
+div.navigation.sticsk {
+	position: fixed;
+	/*top: 120;*/
+	z-index: 10000;
+}
+
+div.navigation ul {
+	list-style: outside none none;
+	margin: 5px 0px;
+	padding: 0px;
+
+}
+
+div.navigation li {
+	padding: 2px 0px 1px 10px;	
+
+}
+div.navigation li.active {
+	border-left: 5px solid white;
+}
+
+div.navigation li a:link {
+	font-family: Arial, "Helvetica Neue", ​Helvetica, ​Arial, ​sans-serif;
+	color: white;
+
+	font-size: 15px;
+	font-weight: 300;
+	text-decoration: none;
+}
+div.navigation li.active a:link {
+	font-weight: 700;
+}
+div.navigation li a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+/*
+	TOOLTIPS	
+*/
+a.tooltip span {
+	position: absolute;
+	z-index: 10;
+	display: none;
+	color: #000;
+	margin-left: 12px;
+
+}
+a.tooltip:hover span {
+	display: inline;
+}
+a.tooltip span ul {
+	padding: 10px;
+	background: #fff;
+	margin-top: -50%;
+
+}
+.callout {
+	z-index: 20;
+	position: absolute;
+	top: 0px;
+	border: 0;
+	left: -12px;
+}
+
+
+
+
+
+
+
+
+
+/*
+	CONTENTS
+*/
+div.content_wrapper {
+	margin-left: 185px;
+	margin-top: 80px;
+}
+div.column_center {
+
+	width: 670px;
+}
+div.column_right {
+	width: 300px;
+}
+div.wrapper {
+	background-color: rgba(255, 255, 255, 0.5);
+	height: 1500px;
+	
+	margin: 5px 15px;
+	float: left;
+
+	/*display: none;*/
+}
