@@ -78,4 +78,16 @@ $(document).ready(function(){
         $("div.main").css({"background": new_img});
     });
 
+
+    /*
+        controls the overlay mask for the 'slideshow' type articles
+    */
+    $("div.content_item ul li.small_article a.hover_overlay").hover(
+        function() {
+            $(this).find("div.overlay_mask").removeClass("hidden");
+        },
+        function() {
+            $(this).find("div.overlay_mask").addClass("hidden");
+        }
+    );
 });
