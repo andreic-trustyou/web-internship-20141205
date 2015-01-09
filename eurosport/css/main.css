@@ -259,8 +259,6 @@ div.column_right {
 	width: 300px;
 }
 div.wrapper {
-	background-color: rgba(255, 255, 255, 0.5);
-	height: 1500px;
 	
 	margin: 5px 15px;
 	float: left;
@@ -271,7 +269,9 @@ div.wrapper {
 /*
 	SUPER-HERO
 */
-div.super-hero, div.super-hero * {
+div.super-hero {
+	margin-bottom: 10px;
+	display: inline-block;
 }
 
 div.super-hero div.main {
@@ -279,6 +279,7 @@ div.super-hero div.main {
 	width: 100%;
 	height: 300px;
 	float: left;
+	
 
 	background-image: url("../images/super-hero-img1.jpg");
 }
@@ -448,6 +449,75 @@ div.super-hero a.thumbnail div.text {
 .hidden {
 	display: none;
 }
+
+
+
+div.content_item {
+	background-color: #27282c;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+div.content_item div.title {
+	font-family: Helvetica;
+	font-size: 17.9333px;
+	font-weight: 300;
+	font-style: normal;
+	font-size-adjust: none;
+	color: #f0f0f0;
+	line-height: 22.4167px;
+
+	margin-bottom: 10px;
+}
+div.content_item ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.content_item li.small_article {
+	margin-bottom: 10px;
+	display: inline-block;
+
+}
+
+div.content_item li.small_article img {
+	float: left;
+	margin-right: 6px;
+	display: block;
+}
+div.content_item li.small_article a:link,div.content_item li.small_article a:visited {
+	color: 	#8ec0ff;
+
+	font-family: Helvetica;
+	font-size: 13px;
+	font-weight: 400;
+	font-style: normal;
+	font-size-adjust: none;
+	text-decoration: none;
+	line-height: 16.25px;
+
+	display: block;
+}
+div.content_item li.small_article a:hover {
+	text-decoration: underline;
+}
+
+
+
+div.content_item li.large_article {
+	margin-bottom: 10px;
+	display: inline-block;
+
+	border-bottom: 1px dotted white;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+div.content_item li.large_article img.icon {
+	float: left;
+}
+
+
 /*
 	TEST
 
