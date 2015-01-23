@@ -1,0 +1,179 @@
+body {
+	background: #aaa;
+
+	height:100%;
+	margin:0;
+	padding:0;
+}
+
+
+
+/*
+	Fixed header
+*/
+
+div.header {
+	position: fixed;
+
+	margin: 0px;
+	padding: 0px 15px 5px 15px;
+
+	top: 0px;
+	right: 0;
+	left: 0;
+	margin-right: auto;
+	margin-left: auto;
+
+	background: #999;
+
+	width: 600px;
+}
+
+div.header h1 {
+	margin: 0px;
+
+	font-family: Impact, Charcoal, sans-serif;
+	color: #0b547f;
+	font-size: 40px;
+
+	text-align: center;
+}
+
+div.header ul.links {
+
+	padding: 0px;
+	margin: 5px 0px 0px 0px;
+
+}
+
+div.header ul.links li {
+	list-style: outside none none;
+
+	display: inline-block;
+	margin: 0px 5px;
+}
+
+div.header ul.links li.right {
+	float: right;
+}
+
+div.header ul.links li a:link, div.header ul.links li a:visited {
+	text-decoration: none;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	font-weight: 400;
+	color: #207090;
+	line-height: 23px;
+
+}
+div.header ul.links li a:hover {
+	border-bottom: 2px solid #207090;
+	font-weight: 900;
+}
+
+
+div.header ul.links li.right {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 14px;
+	font-weight: 400;
+	color: #207090;
+	line-height: 23px;
+}
+
+div.header ul.links li span#user.logged {
+	color: #206585;
+	font-weight: 900;
+}
+
+
+
+/*
+	Modal dialog
+*/
+div.modal_overlay {
+	position: absolute;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.4);
+
+	opacity: 0;
+}
+
+div.modal_overlay div.log_in {
+	position:absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	margin: auto;
+
+	background-color: #a4b4c4;
+	border: 3px solid #364396;
+	border-radius: 20px 40%;
+
+	padding: 5px 15px;
+	text-align: center;
+
+	width: 280px;
+	height: 200px;
+
+	font-family: "Courier New", Courier, monospace;
+	color: #364396;
+}
+
+div.modal_overlay div.log_in h1 {
+	margin: 15px 0px;
+}
+
+div.modal_overlay div.log_in ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.modal_overlay div.log_in ul li {
+	list-style-type: none;
+	overflow: hidden;
+	display: block;
+	margin-top: 10px;
+}
+
+div.modal_overlay div.log_in ul li div.label {
+	float: left;
+	padding: 0px 5px 0px 10px;
+	font-size: 16px;
+	line-height: 23px;
+}
+div.modal_overlay div.log_in ul li input {
+	float: right;
+	padding: 0px 10px 0px 5px;
+	border: 1px solid #364396;	
+	width: 150px;
+}
+
+div.modal_overlay div.log_in ul li button {
+	width: 100px;
+	height: 25px;
+	color: #364396;
+	border: 1px solid #364396;
+	font-weight: 900;
+}
+div.modal_overlay div.log_in ul li div.info {
+	font-size: 12px;
+	color: red;
+
+}
+
+
+
+
+
+
+
+
+.hidden {
+	display: none;
+}
