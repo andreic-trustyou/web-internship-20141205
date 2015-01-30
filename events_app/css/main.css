@@ -7,6 +7,10 @@ body {
 }
 
 
+.hidden {
+	display: none !important;
+}
+
 
 /*
 	Fixed header
@@ -103,7 +107,7 @@ div.modal_overlay {
 	opacity: 0;
 }
 
-div.modal_overlay div.log_in {
+div.modal_overlay div.dialog {
 	position:absolute;
 	top: 0px;
 	bottom: 0px;
@@ -118,62 +122,68 @@ div.modal_overlay div.log_in {
 	padding: 5px 15px;
 	text-align: center;
 
-	width: 280px;
-	height: 200px;
-
 	font-family: "Courier New", Courier, monospace;
 	color: #364396;
+
 }
 
-div.modal_overlay div.log_in h1 {
+div.modal_overlay div.dialog h1 {
 	margin: 15px 0px;
 }
 
-div.modal_overlay div.log_in ul {
+div.modal_overlay div.dialog ul {
 	padding: 0px;
 	margin: 0px;
 }
 
-div.modal_overlay div.log_in ul li {
+div.modal_overlay div.dialog ul li {
 	list-style-type: none;
 	overflow: hidden;
 	display: block;
 	margin-top: 10px;
 }
 
-div.modal_overlay div.log_in ul li div.label {
+div.modal_overlay div.dialog ul li div.label {
 	float: left;
 	padding: 0px 5px 0px 10px;
 	font-size: 16px;
 	line-height: 23px;
 }
-div.modal_overlay div.log_in ul li input {
+div.modal_overlay div.dialog ul li input {
 	float: right;
 	padding: 0px 10px 0px 5px;
 	border: 1px solid #364396;	
 	width: 150px;
 }
 
-div.modal_overlay div.log_in ul li button {
+div.modal_overlay div.dialog ul li button {
 	width: 100px;
 	height: 25px;
 	color: #364396;
 	border: 1px solid #364396;
 	font-weight: 900;
 }
-div.modal_overlay div.log_in ul li div.info {
+div.modal_overlay div.dialog ul li div.info {
 	font-size: 12px;
 	color: red;
 
 }
 
 
+/*
+	Custom modal dialogs
+*/
 
-
-
-
-
-
-.hidden {
-	display: none;
+div.modal_overlay div.log_in {
+	
+	width: 280px;
+	height: 200px;
 }
+
+div.modal_overlay div.add_event {
+	
+	width: 310px;
+	height: 250px;
+}
+
+
