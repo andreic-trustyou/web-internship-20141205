@@ -1,7 +1,8 @@
 (function() {
 
+	var modal = {}
 
-	createModal = function () {
+	modal.createModal = function () {
 		var $modal = $(
 			"<div class='modal_overlay'>" +
 				"<div class='wrapper'>" +
@@ -40,10 +41,10 @@
 		return $modal;
 	}
 
-	createLoginModal = function () {
-		$modal = createModal();
+	modal.createLoginModal = function () {
+		$modal = modal.createModal();
 
-		XHReq("templates/modal_login.html", function(responseText) {
+		EVENT.XHReq("templates/modal_login.html", function(responseText) {
 			$modal.find("div.wrapper").append(responseText);
 
 			$modal.find("button")
@@ -51,9 +52,9 @@
 					var username = $modal.find("#username").prop("value");
 					var password = $modal.find("#password").prop("value");
 
-					if (Auth.verifyLogIn(username, password)) {
+					if (EVENT.auth.Auth.verifyLogIn(username, password)) {
 						$modal.dismiss(function() {
-							logInUser(username);
+							EVENT.auth.logInUser(username);
 							window.location.replace($modal.find("button").attr("href"));
 						});
 					}
@@ -90,52 +91,58 @@
 		return $modal;
 	}
 
-	createAddEventModal = function () {
-		$modal = createModal();
+	modal.createAddEventModal = function () {
+		$modal = modal.createModal();
 
-		function isValidString(text, min_length, max_length) {
-			if (typeof(text) != "string") {
-				return false;
-			}
-			if (text.length < min_length) {
-				return false;
-			}
-			if (text.length > max_length) {
-				return false;
-			}
-			return true;
-		}
 
-		function validateFields() {
-			var error_message = "Text must be between 4 and 20 characters!";
-			var error = "";
 
-			// TODO
 
-			return error ? error : true;
-		}
-
-		XHReq("templates/modal_add_event.html", function(responseText) {
+		EVENT.XHReq("templates/modal_add_event.html", function(responseText) {
 			$modal.find("div.wrapper").append(responseText);
 
 			$modal.find("button")
 				.on("click", function() {
+					$modal.find("li div.label").removeClass("wrong");
 					var title = $modal.find("#title").prop("value");
 					var location = $modal.find("#location").prop("value");
 					var description = $modal.find("#description").prop("value");
 					var date = $modal.find("#date").prop("value");
 
-					var error_message = validateFields();
-
-					if (error_message) {
+					var errors = EVENT.event.validateFields({
+						"title": title,
+						"location": location,
+						"description": description,
+						"date": date
+					});
+					if (!errors) {
 						$modal.dismiss(function() {
+							var ev = new EVENT.event.Event(title, date, location, description);
+							EVENT.storage.addEvent(ev);
 							window.location.replace($modal.find("button").attr("href"));
 						});
 					}
 					else {
-						$modal.find("div.log_in input").prop("value", "");
-						$modal.find("#username").select();
-						$modal.find("div.log_in li div.info").text(error_message)
+						// add class 'wrong' to corresponding labels
+						errors.map(function(e) { return e[0]; })
+							.forEach(function(e, i) {
+								$modal.find("li div.label")
+									.filter("." + e)
+									.addClass("wrong")
+									.parent()
+									.find("input")
+									.prop("value", "");
+
+							});
+
+						// select the first wrong field
+						$modal.find("li div.label.wrong")
+							.parent()
+							.find("input")
+							.eq(0)
+							.select();
+
+						// place the error message
+						$modal.find("div.dialog li div.info").text(errors[0][1])
 							.animate(
 								{"width": "+=20px"},
 								30
@@ -162,5 +169,7 @@
 
 		return $modal;
 	}
+
+	EVENT.modal = modal;
 
 })();

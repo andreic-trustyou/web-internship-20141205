@@ -1,14 +1,14 @@
-   (function() {
+ (function() {
 
-	XHReq = function (url, handler) {
-		xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				handler(xmlhttp.responseText);
-			}
-		};
-		xmlhttp.open("GET", url, true);
-		xmlhttp.send();
+ 	EVENT = {};
+
+	EVENT.XHReq = function (url, handler) {
+		$.ajax({
+			"url": url,
+			})
+		.done(function(response_text, status_code) {
+			handler(response_text);
+		});
 	};
 
 
@@ -17,15 +17,15 @@
 		//
 		// 	Login check
 		// 
-		var loggedUser = getLoggedUser();
+		var loggedUser = EVENT.auth.getLoggedUser();
 		if (loggedUser) {
-			$("div.header ul.links li span#user").text(Auth.getUserDetails(loggedUser).name).addClass("logged");
+			$("div.header ul.links li span#user").text(EVENT.auth.Auth.getUserDetails(loggedUser).name).addClass("logged");
 			$("div.header ul.links li:has(a#log-in)").hide();
-			if (Auth.getUserDetails(loggedUser).type == 0) {
+			if (EVENT.auth.Auth.getUserDetails(loggedUser).type == 0) {
 				$("div.header ul.links li:has(a#add-event)")
 					.removeClass("hidden")
 					.on("click", function(e) {
-						$("body").append(createAddEventModal());
+						$("body").append(EVENT.modal.createAddEventModal());
 						e.preventDefault();
 					});
 			}
@@ -40,12 +40,13 @@
 		//	Log in/out controller
 		// 
 		$("div.header ul.links li a#log-out").on("click", function(e) {
-			logOut();
+			EVENT.auth.logOut();
 		});
 		$("div.header ul.links li a#log-in").on("click", function(e) {
-			$("body").append(createLoginModal());
+			$("body").append(EVENT.modal.createLoginModal());
 			e.preventDefault();
 		});
+
 	});
 
 

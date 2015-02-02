@@ -1,5 +1,8 @@
 (function() {
-	Auth = function() {
+
+	var auth = {}
+
+	auth.Auth = function() {
 		users = {
 			"admin": {
 				"password": "test",
@@ -34,7 +37,7 @@
 	// 
 	//	Cookie 
 	// 
-	setCookie = function(cname, cvalue, minutes) {
+	auth.setCookie = function(cname, cvalue, minutes) {
 		cname = encodeURIComponent(cname);
 		cvlue = encodeURIComponent(cvalue);
 		var d = new Date();
@@ -44,7 +47,7 @@
 		document.cookie = cname + "=" + cvalue + "; expires=" + expires;
 	}
 
-	getCookie = function(cname) {
+	auth.getCookie = function(cname) {
 		var name = encodeURIComponent(cname) + "=";
 		var ca = document.cookie.split(';');
 		for(var i = 0 ; i < ca.length ; i++) {
@@ -57,7 +60,7 @@
 		return "";
 	} 
 
-	deleteCookie = function(cname) {
+	auth.deleteCookie = function(cname) {
 		cname = encodeURIComponent(cname);
 		document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC"; 
 	}
@@ -65,21 +68,23 @@
 	// 
 	//	Utils
 	// 
-	getLoggedUser = function() {
-		return getCookie("user_logged");
+	auth.getLoggedUser = function() {
+		return auth.getCookie("user_logged");
 	}
 
-	logInUser = function(username, logTime) {
-		if (getLoggedUser())
+	auth.logInUser = function(username, logTime) {
+		if (auth.getLoggedUser())
 			return false;
 
 		logTime = logTime || 10; // defaut at 10 minutes
-		setCookie("user_logged", username, logTime)
+		auth.setCookie("user_logged", username, logTime)
 		return true;
 	}
 
-	logOut = function() {
-		deleteCookie("user_logged");
+	auth.logOut = function() {
+		auth.deleteCookie("user_logged");
 	}
 
+
+	EVENT.auth = auth;
 })();
