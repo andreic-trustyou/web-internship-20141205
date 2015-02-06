@@ -2,7 +2,7 @@
 
 	var event = {}
 
-	event.generateUUID = function (){
+	var generateUUID = function (){
 		var d = new Date().getTime();
 		var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 			var r = (d + Math.random()*16)%16 | 0;
@@ -42,7 +42,7 @@
 					}
 				}
 			} else {
-				var error = checkStringForErrors(fields[key], 5, 23);
+				var error = checkStringForErrors(fields[key], 5, (key == "description") ? 150 : 23);
 				if (error) {
 					error_list.push([key, (key[0].toUpperCase() + key.slice(1)) + " " + error + "!"]);
 				}
@@ -65,7 +65,7 @@
 			return new event.Event(title, timestamp, location, description, id);
 		}
 
-		this.id = id || event.generateUUID();
+		this.id = id || generateUUID();
 		this.title = title;
 		this.timestamp = timestamp;
 		this.location = location;

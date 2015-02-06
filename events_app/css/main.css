@@ -31,6 +31,8 @@ div.header {
 	background: #999;
 
 	width: 600px;
+
+	z-index: 100;
 }
 
 div.header h1 {

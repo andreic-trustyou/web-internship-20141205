@@ -3,7 +3,7 @@
 	var auth = {}
 
 	auth.Auth = function() {
-		users = {
+		var users = {
 			"admin": {
 				"password": "test",
 				"details": {

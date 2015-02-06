@@ -6,6 +6,9 @@ var path = require("path")
 var url = require("url")
 var filesys = require("fs");
 
+
+var port = 9090;
+
 var http = my_http.createServer(function(request,response){
 	var my_path = url.parse(request.url).pathname;
 	if (my_path == "/") {
@@ -39,6 +42,6 @@ var http = my_http.createServer(function(request,response){
 			});
 		}
 	});
-}).listen(8080);
+}).listen(port);
 
-sys.puts("Server Running on 8080");			
+sys.puts("Server Running on " + port);

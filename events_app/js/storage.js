@@ -8,26 +8,33 @@
 			return;
 		}
 
-		var event_list = storage.getEvents();
+		var event_list = getRawEventList();
 		event_list.push(ev.serialize());
 		window.localStorage["events"] = JSON.stringify(event_list);
 	};
 
 
 	storage.getEvents = function() {
-		try {
-			var event_list = JSON.parse(window.localStorage["events"]);
-			return event_list.map(function(e, i) {
-				return JSON.parse(e);
-			});
-		}
-		catch (e) {
-			console.error(e.stack);
-		}
-
+		var event_list = getRawEventList();
+		return event_list.map(function(element, index) {
+			return JSON.parse(element);
+		});
 	}
 
+	var getRawEventList = function() {
+		storageCheck();
+		return JSON.parse(window.localStorage["events"]);
+	}
 
+	// check if the storage is JSON format
+	var storageCheck = function() {
+		try {
+			JSON.parse(window.localStorage["events"]);
+		}
+		catch (e) {
+			window.localStorage["events"] = "[]";
+		}
+	};
 	
 	EVENT.storage = storage;	
 })();
