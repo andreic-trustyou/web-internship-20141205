@@ -103,6 +103,8 @@
 			$modal.find("button")
 				.on("click", function() {
 					$modal.find("li div.label").removeClass("wrong");
+					$modal.find("li input").removeClass("wrong");
+
 					var title = $modal.find("#title").prop("value");
 					var location = $modal.find("#location").prop("value");
 					var description = $modal.find("#description").prop("value");
@@ -114,22 +116,23 @@
 						"description": description,
 						"date": date
 					});
-					if (!errors) {
+					var error_fields = Object.keys(errors);
+					if (!error_fields.length) {
 						$modal.dismiss(function() {
-							var ev = new EVENT.event.Event(title, date, location, description);
+							var ev = new EVENT.event.Event(title, EVENT.event.convertDateToUTCTimestamp(date), location, description);
 							EVENT.storage.addEvent(ev);
 							window.location.replace($modal.find("button").attr("href"));
 						});
 					}
 					else {
 						// add class 'wrong' to corresponding labels
-						errors.map(function(e) { return e[0]; })
-							.forEach(function(e, i) {
+						error_fields.forEach(function(e, i) {
 								$modal.find("li div.label")
 									.filter("." + e)
 									.addClass("wrong")
 									.parent()
 									.find("input")
+									.addClass("wrong")
 									.prop("value", "");
 
 							});
@@ -142,7 +145,8 @@
 							.select();
 
 						// place the error message
-						$modal.find("div.dialog li div.info").text(errors[0][1])
+						$modal.find("div.dialog li div.info")
+							.text(errors[$modal.find("li input.wrong:eq(0)").attr("id")])
 							.animate(
 								{"width": "+=20px"},
 								30

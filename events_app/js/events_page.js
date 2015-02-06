@@ -1,10 +1,16 @@
 (function() {
 	// 
-	//  Read events (TODO)
+	//  Read events 
 	// 	
-
 	$(document).ready(function() {
 		var event_list = EVENT.storage.getEvents();
+
+		// sort the events by date
+		event_list.sort(
+			function(first, second) {
+				return first.timestamp - second.timestamp;
+			}
+		);
 
 		var $events_ul = $("div.event_list ul");
 
@@ -18,9 +24,12 @@
 
 				$li_element.find("div.event").attr("id", event.id);
 				$li_element.find("div.title").append(event.title);
-				$li_element.find("div.description").append(event.description);
 				$li_element.find("div.location").append(event.location);
-				$li_element.find("div.timestamp").append(event.timestamp);
+				$li_element.find("div.timestamp").append(
+					EVENT.event.convertUTCTimestampToString(event.timestamp)
+				);
+				// TODO: make description toggable!
+				$li_element.find("div.description").append(event.description);
 				$events_ul.append($li_element);
 			})
 		});

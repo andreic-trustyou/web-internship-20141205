@@ -20,8 +20,12 @@ div.content_wrapper div.event_list ul li {
 	margin-right: auto;
 
 	display: inline-block;
-	float: left;
+	/*float: left;*/
 }
+div.content_wrapper div.event_list ul li div.event:hover {
+	background: rgba(12, 100, 160, 0.07);
+}
+
 div.content_wrapper div.event_list ul li div.event {
 	border: 2px solid #0b547f;
 	
@@ -33,6 +37,7 @@ div.content_wrapper div.event_list ul li div.event {
 	max-width: 300px;
 	overflow: auto;
 	
+
 }
 
 div.event_list div.event div.field {
