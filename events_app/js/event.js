@@ -141,9 +141,9 @@
 	// Location - required text
 	// Description - required text
 	
-	event.Event = function(title, timestamp, location, description, id) {
+	event.Event = function(title, timestamp, location, description, attendees, id) {
 		if (!(this instanceof event.Event)) {
-			return new event.Event(title, timestamp, location, description, id);
+			return new event.Event(title, timestamp, location, description, id, attendees);
 		}
 
 		this.id = id || generateUUID();
@@ -151,12 +151,12 @@
 		this.timestamp = timestamp;
 		this.location = location;
 		this.description = description;
+		this.attendees = attendees;
 	};
-
 	event.Event.prototype = {
 		serialize: function() {
 			return JSON.stringify(this);
-		}
+		},
 	};
 
 	event.deserialize = function(json_string) {
@@ -166,6 +166,7 @@
 			ev.timestamp,
 			ev.location,
 			ev.description,
+			ev.attendees,
 			ev.id);
 	};
 

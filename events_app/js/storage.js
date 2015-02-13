@@ -15,14 +15,18 @@
 
 
 	storage.getEvents = function() {
+		storageCheck();
 		var event_list = getRawEventList();
 		return event_list.map(function(element, index) {
 			return JSON.parse(element);
 		});
 	}
 
+	storage.getNumberOfEvents = function () {
+		return getRawEventList().length;
+	}
+
 	var getRawEventList = function() {
-		storageCheck();
 		return JSON.parse(window.localStorage["events"]);
 	}
 
