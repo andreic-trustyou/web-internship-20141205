@@ -28,8 +28,12 @@
 				$li_element.find("div.timestamp").append(
 					EVENT.event.convertUTCTimestampToString(event.timestamp)
 				);
-				// TODO: make description toggable!
+
 				$li_element.find("div.description").append(event.description);
+				$li_element.on('click', function() {
+					$li_element.find("div.toggle").fadeToggle(200);
+				});
+
 				$events_ul.append($li_element);
 			})
 		});

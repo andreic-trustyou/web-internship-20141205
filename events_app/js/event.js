@@ -123,7 +123,7 @@
 				var date_errors = checkDateTimeForErrors(fields[key]);
 				if (date_errors) errors["date"] = date_errors;
 			} else {
-				var error = checkStringForErrors(fields[key], 5, (key == "description") ? 150 : 23);
+				var error = checkStringForErrors(fields[key], 5, (key == "description") ? 500 : 23);
 				if (error) {
 					errors[key] = (key[0].toUpperCase() + key.slice(1)) + " " + error + "!";
 				}

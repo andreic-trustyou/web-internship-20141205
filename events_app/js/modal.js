@@ -12,14 +12,14 @@
 
 		$modal
 			.on("click", function(e) {
-				$modal.remove();
+				$modal.dismiss(null, 100);
 			})
 			.keydown(function(event) {
 				if (event.which == 13) {
 					$modal.find("div.dialog ul li button").click();
 				}
 				else if(event.which == 27) {
-					$modal.remove();
+					$modal.dismiss(null, 100);
 				}
 			})
 		$modal.find("div.wrapper")
@@ -27,12 +27,12 @@
 				e.stopPropagation();
 			});
 
-		$modal.dismiss = function (handler) {
+		$modal.dismiss = function (handler, duration) {
 			$modal.animate(
 				{"opacity": 0},
-				200,
+				(duration || 200),
 				function() {
-					handler();
+					typeof handler === "function" && handler();
 					$modal.remove();
 				}
 			);
