@@ -36,21 +36,33 @@
 					.removeClass('hidden')
 					.append(document.createTextNode(event.description));
 
-				if (EVENT.auth.getLoggedUser()) {
+				var logged_user = EVENT.auth.getLoggedUser();
+				if (logged_user) {
 					$li_element.find("div.attendees").removeClass('hidden').append(document.createTextNode(event.attendees.length));
 
+					// Add the Register/Deregister button
+					$register_element = $li_element.find("div.register");
+					$register_element.removeClass("hidden");
+					if (event.isAttending(logged_user)) {
+						$register_element.addClass("off");
+						$register_element.text("Deregister")
+					} else {
+						$register_element.addClass("on");
+						$register_element.text("Register")
+					}
+					$register_element.on("click", function() {
+						event.toggleUserRegistration(logged_user);
+						EVENT.storage.updateEvent(event);
+						window.location.replace("./");
+					});
+
+
+					// Display the number of attendees for each event
 					var $attendees = $("<div class='attendees_hover'></div>")
-
 					$li_element.find("div.attendees").mousemove(function(event) {
-
-
-						qwe = $attendees.css('border-top-width');
-
 						var vertical =  2 * parseInt($attendees.css('border-top-width').replace('px', '')) + 2 * parseInt($attendees.css('padding-top').replace('px', '')) + $attendees.height();
 						var horizontal =  2 * parseInt($attendees.css('border-left-width').replace('px', '')) + 2 * parseInt($attendees.css('padding-left').replace('px', '')) + $attendees.width();
 
-
-						console.log(vertical);
 						$attendees.css({
 							"left": event.clientX - horizontal,
 							"top": event.clientY - vertical
@@ -60,7 +72,7 @@
 					event.attendees.forEach(function(elem) {
 						var $p_elem = $("<p></p>")
 						$attendees.append($p_elem);
-						$p_elem.append(document.createTextNode(elem.name));
+						$p_elem.append(document.createTextNode(elem.username));
 					});
 
 					$li_element.find("div.attendees").hover(
@@ -72,7 +84,6 @@
 							$attendees.hide();
 
 						});
-
 				}
 
 

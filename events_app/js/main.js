@@ -108,7 +108,7 @@
 					EVENT.event.convertDateToUTCTimestamp(randInt(2020, 2015) + "-" + randInt(12, 1) + "-" + randInt(31, 1) + " " + randInt(23, 0) + ":" + randInt(59, 0)),
 					randWord(7, 1),
 					randText(randInt(130, 5), 5, 0.8),
-					[{"name": "cata"}, {"name": "admin"}]
+					[]
 				)
 			);
 		});	

@@ -151,13 +151,43 @@
 		this.timestamp = timestamp;
 		this.location = location;
 		this.description = description;
-		this.attendees = attendees;
+		this.attendees = attendees || [];
 	};
 	event.Event.prototype = {
 		serialize: function() {
 			return JSON.stringify(this);
 		},
+		isAttending: function (user) {
+			return this.attendees.some(
+				function(attendee) {
+					if (attendee.username == user) return true;
+				});
+		},
+		toggleUserRegistration: function(user) {
+			// It actually toggles the registration state of a user to the event.
+			var event_context = this;
+			var index = function() {
+					for (registered_user in event_context.attendees) {
+						if (event_context.attendees[registered_user].username == user) {
+							return registered_user;
+						}
+					}
+					return -1;
+				}();
+
+			console.log(index);
+			if (index > -1) {
+				this.attendees.splice(index, 1);
+			} else {
+				this.attendees.push({
+					"username": user
+				})
+			}
+		}
+
 	};
+
+
 
 	event.deserialize = function(json_string) {
 		var ev = JSON.parse(json_string);
